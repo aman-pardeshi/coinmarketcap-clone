@@ -6,9 +6,19 @@
     "start": "next start"
   },
   "dependencies": {
+    "@walletconnect/web3-provider": "^1.7.8",
+    "chart.js": "^3.8.0",
+    "gun": "^0.2020.1237",
+    "magic-sdk": "^8.1.1",
+    "moralis": "^1.8.0",
     "next": "latest",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-chartjs-2": "^4.2.0",
+    "react-dom": "^17.0.2",
+    "react-moralis": "^1.4.0",
+    "react-switch": "^7.0.0",
+    "web3-auth": "^1.1.0",
+    "web3uikit": "^0.1.159"
   },
   "devDependencies": {
     "@types/node": "17.0.4",
