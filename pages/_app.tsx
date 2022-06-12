@@ -6,8 +6,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   console.log(process.env.NEXT_PUBLIC_SERVER, process.env.NEXT_PUBLIC_APP_ID)
   return (
     <MoralisProvider
-      serverUrl={process.env.NEXT_PUBLIC_SERVER}
-      appId={process.env.NEXT_PUBLIC_APP_ID}
+      appId={process.env.NEXT_PUBLIC_APP_ID ?? 'AppId Undefined Fallback'}
+      serverUrl={
+        process.env.NEXT_PUBLIC_SERVER ?? 'ServerUrl Undefined Fallback'
+      }
     >
       <Component {...pageProps} />
     </MoralisProvider>
