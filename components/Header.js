@@ -4,7 +4,7 @@ import Search from '../assets/svg/search'
 import { ConnectButton } from 'web3uikit'
 
 const styles = {
-  header: `bg-[#17171A] text-white h-20 flex gap-[100px] w-full p-[30px]`,
+  header: `bg-[#17171A] text-white h-20 flex gap-[50px] w-full p-[20px]`,
   headerWrapper: `flex justify-center h-full max-w-screen-xl mx-auto px-4`,
   nav: 'flex justify-center items-center gap-[20px]',
   navItem: `relative mr-1 cursor-pointer hover:opacity-60`,

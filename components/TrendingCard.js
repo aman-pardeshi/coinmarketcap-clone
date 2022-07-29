@@ -28,6 +28,7 @@ const TrendingCard = ({ title, trendingData, icon }) => {
           symbol={item.symbol}
           name={item.name}
           icon={item.icon}
+          isIncrement={item.isIncrement}
           rate={item.rate}
         />
       ))}

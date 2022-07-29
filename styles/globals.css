@@ -4,7 +4,20 @@
 
 body {
   background: linear-gradient(to bottom, #212430, #17171a);
-  height: 100vh;
+
   width: 100vw;
   box-sizing: border-box;
+}
+
+table {
+  padding: 20px;
+}
+
+li {
+  cursor: pointer;
+  font-weight: 500;
+}
+
+li:hover {
+  color: #c4d0fe;
 }

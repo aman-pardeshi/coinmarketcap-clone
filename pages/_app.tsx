@@ -1,6 +1,7 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { MoralisProvider } from 'react-moralis'
+import { CoinMarketProvider } from '../context/context'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -10,7 +11,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         process.env.NEXT_PUBLIC_SERVER ?? 'ServerUrl Undefined Fallback'
       }
     >
-      <Component {...pageProps} />
+      <CoinMarketProvider>
+        <Component {...pageProps} />
+      </CoinMarketProvider>
     </MoralisProvider>
   )
 }
