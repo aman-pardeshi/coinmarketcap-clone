@@ -12,7 +12,7 @@ import ReactSwitch from 'react-switch'
 const styles = {
   trendingWrapper: `mx-auto max-w-screen-2xl`,
   h1: `text-3xl text-white`,
-  flexCenter: `flex items-center`,
+  flexCenter: `flex items-center mb-10`,
 }
 
 const TrendingData = [
@@ -43,7 +43,7 @@ const TrendingData = [
 ]
 
 const Trending = () => {
-  const [checked, setChecked] = useState(false)
+  const [highlightsSwitch, setHighlightsSwitch] = useState(true)
 
   return (
     <div className="px-20 text-white">
@@ -56,8 +56,8 @@ const Trending = () => {
           <div className="flex">
             <p className="text-gray-400">Highlights &nbsp;</p>
             <ReactSwitch
-              checked={checked}
-              onChange={() => setChecked(!checked)}
+              checked={highlightsSwitch}
+              onChange={() => setHighlightsSwitch(!highlightsSwitch)}
             />
           </div>
         </div>
@@ -71,29 +71,32 @@ const Trending = () => {
             <Rate isIncrement={true} rate="0.53%" />
           </span>
           <p className="text-gray-400">
-            &nbsp; decrease over the last day.{' '}
-            <span className="underline">Read more</span>.
+            &nbsp; decrease over the last day.&nbsp;
+            <span className="cursor-pointer underline">Read more</span>.
           </p>
         </div>
         <br />
-
-        <div className={styles.flexCenter}>
-          <TrendingCard
-            title="Trending"
-            icon={fire}
-            trendingData={TrendingData}
-          />
-          <TrendingCard
-            title="Biggest Gainers"
-            icon={gainers}
-            trendingData={TrendingData}
-          />
-          <TrendingCard
-            title="Recently Added"
-            icon={recent}
-            trendingData={TrendingData}
-          />
-        </div>
+        {highlightsSwitch ? (
+          <div className={styles.flexCenter}>
+            <TrendingCard
+              title="Trending"
+              icon={fire}
+              trendingData={TrendingData}
+            />
+            <TrendingCard
+              title="Biggest Gainers"
+              icon={gainers}
+              trendingData={TrendingData}
+            />
+            <TrendingCard
+              title="Recently Added"
+              icon={recent}
+              trendingData={TrendingData}
+            />
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   )

@@ -32,7 +32,7 @@ const CMCTable = () => {
   }, [getTopTenCoins])
 
   return (
-    <div className="font-bold text-white">
+    <div className="mt-0 font-bold text-white">
       <div className="mx-auto max-w-screen-2xl px-20">
         <table className="w-full">
           <CMCTableHeader />

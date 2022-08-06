@@ -52,7 +52,7 @@ const CMCTableRow = ({
     )
   const viewPrice = () =>
     router.push(
-      `/currencies/info?symbol=${coinSymbol}&coin=${coinName}&price=${price}`
+      `/currencies/price?symbol=${coinSymbol}&coin=${coinName}&price=${price}`
     )
   const formatNumber = (num) => {
     return Number(num.toFixed(2).toLocaleString())

@@ -54,9 +54,7 @@ const ChatCard = ({
 
         <MoreHorizontal />
       </div>
-
       <p className={styles.messageContent}>{content}</p>
-
       <div className={styles.flexBetween}>
         <div className={styles.postAction}>
           <Comment />

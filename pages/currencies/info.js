@@ -34,7 +34,7 @@ const Currencies = () => {
 
     setCoinName(urlParams.get('coin'))
     setCoinSymbol(urlParams.get('symbol'))
-    setPrice(urlParams.get('price').toLocaleString())
+    setPrice(Number(urlParams.get('price')).toLocaleString())
   }
 
   return (

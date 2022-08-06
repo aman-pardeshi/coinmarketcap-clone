@@ -10,6 +10,8 @@ import solana from '../../assets/solana.png'
 import avalance from '../../assets/avalanche.png'
 import bnb from '../../assets/bnb.png'
 import doge from '../../assets/shiba.png'
+import { useContext } from 'react'
+import { CoinMarketContext } from '../../context/context'
 
 const styles = {
   coinNameRow: `flex items-center`,
@@ -17,6 +19,8 @@ const styles = {
 }
 
 const CoinNameRow = ({ name, icon, clicked }) => {
+  const { openModal } = useContext(CoinMarketContext)
+
   const coinIcon = () => {
     switch (name) {
       case 'Bitcoin':
@@ -158,7 +162,9 @@ const CoinNameRow = ({ name, icon, clicked }) => {
       </div>
       <p>
         {name === 'Bitcoin' || name === 'Ethereum' || name === 'Tether' ? (
-          <span className={styles.buyButton}>Buy</span>
+          <span className={styles.buyButton} onClick={() => openModal()}>
+            Buy
+          </span>
         ) : (
           <></>
         )}

@@ -5,9 +5,12 @@ import shiba from '../assets/shiba.png'
 import Image from 'next/image'
 import Button from './Button'
 import ChatCard from './ChatCard'
+import { faker } from '@faker-js/faker'
+import { GunContext } from '../context/gunContext'
+import { Avatar } from 'web3uikit'
 
 const styles = {
-  bullishLabel: `flex cursor-pointer active:bg-green-600 items-center text text-green-600 border border-green-600 h-min px-2 rounded-lg`,
+  bullishLabel: `flex cursor-pointer active:bg-green-600 items-center text text-green-600 border border-green-600 px-2 rounded-lg py-0`,
   bearishLabel: `flex cursor-pointer active:bg-red-500 items-center text-[#EA3943] border border-red-600 h-min px-2 rounded-lg`,
   input: `w-full bg-[#222531] p-4 outline-none rounded-xl`,
   chatContainer: `p-5 bg-[#222531] p-4 outline-none rounded-xl`,
@@ -24,8 +27,41 @@ const Chat = () => {
   const [message, setMessage] = useState('')
   const [bullishValue, setBullishValue] = useState(true)
 
+  const { gun, getMessages, state } = useContext(GunContext)
+
   const sendMessage = () => {
-    console.log('hello')
+    if (message.trim() === '') return
+    const messageRef = gun.get('GUN_REF_7')
+
+    const newMessage = {
+      sender: faker.name.findName(),
+      content: message.trim(),
+      inBullish: bullishValue,
+      createdAt: Date().substring(4, 11),
+      messageId: Date.now(),
+    }
+
+    messageRef.set(newMessage)
+    setMessage('')
+  }
+
+  useEffect(() => {
+    getMessages('GUN_REF_7')
+  }, [])
+
+  const formattedMessagesArray = () => {
+    const uniqueArray = state.messages.filter((value, index) => {
+      const _value = JSON.stringify(value)
+
+      return (
+        index ===
+        state.messages.findIndex((obj) => {
+          return JSON.stringify(obj) === _value
+        })
+      )
+    })
+
+    return uniqueArray
   }
 
   return (
@@ -59,7 +95,6 @@ const Chat = () => {
                 onClick={() => setBullishValue(true)}
               >
                 <ChevronUp fill="#17C784" />
-                &nbsp;
                 <small className="ml-1">Bullish</small>
               </div>
               &nbsp; &nbsp;
@@ -100,7 +135,23 @@ const Chat = () => {
         <Button label="Post" onPress={sendMessage} />
       </div>
       {/* format messages  */}
-      <ChatCard />
+      {formattedMessagesArray()
+        .slice(0)
+        .reverse()
+        .map((message, index) => {
+          return (
+            <ChatCard
+              key={index}
+              sender={message.sender}
+              senderUsername={message.username}
+              bullish={message.inBullish}
+              timeStamp={message.createdAt}
+              content={message.content}
+              likes="2.7K"
+              comments="19K"
+            />
+          )
+        })}
     </>
   )
 }

@@ -17,6 +17,128 @@ const styles = {
   convertButton: `bg-[#1d4ed8] p-2 px-5 w-min rounded-xl mt-5 cursor-pointer hover:opacity-60`,
 }
 
+export const coinIcon = (coinSymbol, imageSize = 50) => {
+  switch (coinSymbol) {
+    case 'Bitcoin':
+      return (
+        <Image
+          src={btc}
+          className="rounded-full"
+          width={imageSize}
+          height={imageSize}
+          alt=""
+        />
+      )
+
+    case 'Etherum':
+      return (
+        <Image
+          src={eth}
+          className="rounded-full"
+          width={imageSize}
+          height={imageSize}
+          alt=""
+        />
+      )
+
+    case 'BNB':
+      return (
+        <Image
+          src={bnb}
+          className="rounded-full"
+          width={imageSize}
+          height={imageSize}
+          alt=""
+        />
+      )
+
+    case 'Tether':
+      return (
+        <Image
+          src={usdt}
+          className="rounded-full"
+          width={imageSize}
+          height={imageSize}
+          alt=""
+        />
+      )
+    case 'USD Coin':
+      return (
+        <Image
+          src={usdc}
+          className="rounded-full"
+          width={imageSize}
+          height={imageSize}
+          alt=""
+        />
+      )
+    case 'XRP':
+      return (
+        <Image
+          src={xrp}
+          className="rounded-full"
+          width={imageSize}
+          height={imageSize}
+          alt=""
+        />
+      )
+    case 'Cardano':
+      return (
+        <Image
+          src={cardano}
+          className="rounded-full"
+          width={imageSize}
+          height={imageSize}
+          alt=""
+        />
+      )
+
+    case 'Terra':
+      return (
+        <Image
+          src={tera}
+          className="rounded-full"
+          width={imageSize}
+          height={imageSize}
+          alt=""
+        />
+      )
+
+    case 'Solona':
+      return (
+        <Image
+          src={solana}
+          className="rounded-full"
+          width={imageSize}
+          height={imageSize}
+          alt=""
+        />
+      )
+
+    case 'Avanlance':
+      return (
+        <Image
+          src={avalance}
+          className="rounded-full"
+          width={imageSize}
+          height={imageSize}
+          alt=""
+        />
+      )
+
+    default:
+      return (
+        <Image
+          src={btc}
+          className="rounded-full"
+          width={imageSize}
+          height={imageSize}
+          alt=""
+        />
+      )
+  }
+}
+
 const CMCPriceConverter = ({
   from,
   fromSymbol,
@@ -26,128 +148,6 @@ const CMCPriceConverter = ({
   to,
   toSymbol,
 }) => {
-  const coinIcon = () => {
-    switch (from) {
-      case 'Bitcoin':
-        return (
-          <Image
-            src={btc}
-            className="rounded-full"
-            width={50}
-            height={50}
-            alt=""
-          />
-        )
-
-      case 'Etherum':
-        return (
-          <Image
-            src={eth}
-            className="rounded-full"
-            width={50}
-            height={50}
-            alt=""
-          />
-        )
-
-      case 'BNB':
-        return (
-          <Image
-            src={bnb}
-            className="rounded-full"
-            width={50}
-            height={50}
-            alt=""
-          />
-        )
-
-      case 'Tether':
-        return (
-          <Image
-            src={usdt}
-            className="rounded-full"
-            width={50}
-            height={50}
-            alt=""
-          />
-        )
-      case 'USD Coin':
-        return (
-          <Image
-            src={usdc}
-            className="rounded-full"
-            width={50}
-            height={50}
-            alt=""
-          />
-        )
-      case 'XRP':
-        return (
-          <Image
-            src={xrp}
-            className="rounded-full"
-            width={50}
-            height={50}
-            alt=""
-          />
-        )
-      case 'Cardano':
-        return (
-          <Image
-            src={cardano}
-            className="rounded-full"
-            width={50}
-            height={50}
-            alt=""
-          />
-        )
-
-      case 'Terra':
-        return (
-          <Image
-            src={tera}
-            className="rounded-full"
-            width={50}
-            height={50}
-            alt=""
-          />
-        )
-
-      case 'Solona':
-        return (
-          <Image
-            src={solana}
-            className="rounded-full"
-            width={50}
-            height={50}
-            alt=""
-          />
-        )
-
-      case 'Avanlance':
-        return (
-          <Image
-            src={avalance}
-            className="rounded-full"
-            width={50}
-            height={50}
-            alt=""
-          />
-        )
-
-      default:
-        return (
-          <Image
-            src={btc}
-            className="rounded-full"
-            width={50}
-            height={50}
-            alt=""
-          />
-        )
-    }
-  }
-
   return (
     <div>
       <h2>
@@ -158,7 +158,7 @@ const CMCPriceConverter = ({
         <div>
           <div className="flex">
             <div className="avatar-container">
-              {fromLogo && fromLogo ? coinIcon() : <div></div>}
+              {fromLogo && fromLogo ? coinIcon(from) : <div></div>}
             </div>
             &nbsp;
             <div>
